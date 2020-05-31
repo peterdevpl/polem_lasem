@@ -1,12 +1,80 @@
 <!DOCTYPE html>
-<html>
+<html lang="pl">
     <head>
         <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        {% block stylesheets %}{% endblock %}
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta property="og:type" content="website">
+        <title>{% block title %}{% trans %}site_title{% endtrans %}{% endblock %}</title>
+        {% block stylesheets %}{{ encore_entry_link_tags('app') }}{% endblock %}
     </head>
     <body>
+        <header>
+            <nav id="contact-bar" class="container">
+                <div class="container">
+                    <div class="col-12 align-items-center" id="contact-bar-col">
+                        <div class="site-logo">
+                            <a href="{{ absolute_url(path('index')) }}" id="home-logo">
+                                <img src="{{ asset('images/polem-lasem.svg') }}" width="100" height="48" alt="polem.lasem">
+                            </a>
+                        </div>
+                        <div class="contact-data">
+                            <a href="mailto:info&#64;decarte&#46;pl">info&#64;decarte&#46;pl</a> &bull;
+                            tel. <strong>600&nbsp;151&nbsp;804</strong> lub <strong>518&nbsp;580&nbsp;402</strong> (w&nbsp;godz.&nbsp;10-19)
+                        </div>
+                        <div class="social-icons">
+                            <a href="https://www.instagram.com/polem.lasem/" rel="nofollow"><img src="{{ asset('images/instagram-white.png') }}" alt="Instagram"></a>
+                        </div>
+                        <div class="hamburger">
+                            <button type="button" aria-controls="top-navigation" aria-expanded="false" aria-label="Pokaż menu" id="hamburger">
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+        </header>
+
+        <main class="container">
         {% block body %}{% endblock %}
+        </main>
+
+        <footer id="sitemap-with-contact">
+            <div class="container">
+                <div class="col-12 col-sm-6 col-md-4">
+                    <h3>{% trans %}header_info{% endtrans %}</h3>
+                    <ul>
+                        <li><a href="{{ path('static_page', {slug: 'zamowienia'}) }}">Jak zamówić</a></li>
+                        <li><a href="{{ path('static_page', {slug: 'pytania-i-odpowiedzi'}) }}">Pytania i odpowiedzi</a></li>
+                        <li><a href="{{ path('static_page', {slug: 'o-nas'}) }}">O nas</a></li>
+                        <li><a href="{{ path('static_page', {slug: 'regulamin'}) }}">Regulamin</a></li>
+                        <li><a href="{{ path('static_page', {slug: 'polityka-prywatnosci'}) }}">Polityka prywatności</a></li>
+                    </ul>
+                </div>
+
+                <div class="col-12 col-md-4" id="footer-contact">
+                    <h3>{% trans %}header_contact{% endtrans %}</h3>
+                    <p>
+                        <a href="mailto:info&#64;decarte&#46;pl">info&#64;decarte&#46;pl</a><br>
+                        tel. <strong>600 151 804</strong>, <strong>518 580 402</strong> (w godz. 10-19)
+                    </p>
+                    <p>Pracownia decARTe s.c.<br>ul. Reymonta 1<br>80-290 Gdańsk</p>
+                    <p>
+                        <a href="https://www.instagram.com/decarte_zaproszenia/" rel="nofollow"><img src="{{ asset('images/instagram.png') }}" alt="Instagram"></a>
+                    </p>
+                </div>
+            </div>
+        </footer>
+
+        <footer id="company-data">
+            <div class="container">
+                <div class="col-12 col-md-8">
+                    {% trans %}bank_account_number{% endtrans %}: 77 1050 1764 1000 0092 3525 8671 (ING&nbsp;Bank&nbsp;Śląski&nbsp;S.A.)
+                </div>
+                <div class="col-12 col-md-4">
+                    NIP: 9571090366, REGON: 366095310
+                </div>
+            </div>
+        </footer>
+
         {% block javascripts %}{% endblock %}
     </body>
 </html>
